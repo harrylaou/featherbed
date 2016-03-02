@@ -1,6 +1,6 @@
 name := "featherbed"
 
-version := "0.1.0"
+version := "0.1.0-SNAPSHOT"
 
 (scalaVersion in ThisBuild) := "2.11.7"
 (resolvers in ThisBuild) += Resolver.sonatypeRepo("snapshots")
@@ -16,7 +16,7 @@ libraryDependencies in ThisBuild ++= Seq(
 lazy val `featherbed-core` = project
 lazy val `featherbed-circe` = project dependsOn `featherbed-core`
 
-lazy val featherbed = project in file(".") dependsOn (`featherbed-core`, `featherbed-circe`)
+lazy val featherbed = project in file(".") aggregate (`featherbed-core`, `featherbed-circe`)
 
 tutSettings
 tutSourceDirectory := sourceDirectory.value / "tut"
